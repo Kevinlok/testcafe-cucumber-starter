@@ -22,14 +22,14 @@ steps:
 - script: npm run testcafe:test-screenshot-video-chrome
   displayName: 'Run TestCafe Tests Chrome'
 
-- task: PublishTestResults@1
-  displayName: "Publish Test Results"
-  condition: succeededOrFailed()
-  continueOnError: true
-  inputs:
-    testResultsFormat: "JUnit"
-    testResultsFiles: "**/report.xml"
-    failTaskOnFailedTests: true
+- task: PublishTestResults@2
+      displayName: "Publish Test Results"
+      condition: succeededOrFailed()
+      continueOnError: true
+      inputs: 
+        testResultsFormat: "JUnit"
+        testResultsFiles: "**/report.xml"
+        failTaskOnFailedTests: true
   
 - task: PublishBuildArtifacts@1
   displayName: "Publish Artifact: TestCafe-and-azure-devops Screenshots "
