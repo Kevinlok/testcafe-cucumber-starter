@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "testcafe:test": "node testcafe.conf.ts --env=test --tags ~@skip",
-    "testcafe:test-focus": "node testcafe.conf.ts --env=test --tags @focus, ~@skip"
+    "testcafe:test-focus": "node testcafe.conf.ts --env=test --tags @focus, ~@skip",
+    "testcafe:test-screenshot-video-chrome": "node testcafe.conf.ts --env=test --tags ~@skip --screenshot=true --video=true --browser=chrome:headless --reporter xunit:report.xml"
   },
   "author": "",
   "license": "ISC",
