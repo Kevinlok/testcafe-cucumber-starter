@@ -23,13 +23,13 @@ steps:
   displayName: 'Run TestCafe Tests Chrome'
 
 - task: PublishTestResults@2
-      displayName: "Publish Test Results"
-      condition: succeededOrFailed()
-      continueOnError: true
-      inputs: 
-        testResultsFormat: "JUnit"
-        testResultsFiles: "**/report.xml"
-        failTaskOnFailedTests: true
+  displayName: "Publish Test Results"
+  condition: succeededOrFailed()
+  continueOnError: true
+  inputs: 
+    testResultsFormat: "JUnit"
+    testResultsFiles: "**/report.xml"
+    failTaskOnFailedTests: true
   
 - task: PublishBuildArtifacts@1
   displayName: "Publish Artifact: TestCafe-and-azure-devops Screenshots "
