@@ -1,0 +1,26 @@
+{
+  "name": "testcafe-cucumber-starter",
+  "version": "1.0.0",
+  "description": "Testcafe and Cucumber starter project",
+  "main": "index.js",
+  "scripts": {
+    "testcafe:test": "node testcafe.conf.ts --env=test --tags ~@skip",
+    "testcafe:test-focus": "node testcafe.conf.ts --env=test --tags @focus, ~@skip"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@types/cucumber": "^7.0.0",
+    "@types/node": "^14.14.22",
+    "cucumber": "^6.0.5",
+    "gherkin-testcafe": "^3.0.1",
+    "minimist": "^1.2.5",
+    "prettier": "^2.2.1",
+    "testcafe": "^1.10.1",
+    "testcafe-reporter-html": "^1.4.6",
+    "testcafe-reporter-xunit": "^2.1.0",
+    "typescript": "^4.1.3"
+  }
+}
