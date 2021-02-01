@@ -1,0 +1,43 @@
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+  displayName: 'npm install'
+
+- script: npm run testcafe:test-screenshot-video-chrome
+  displayName: 'Run TestCafe Tests Chrome'
+
+- task: PublishTestResults@2
+  displayName: "Publish Test Results"
+  condition: succeededOrFailed()
+  continueOnError: true
+  inputs: 
+    testResultsFormat: "JUnit"
+    testResultsFiles: "**/report.xml"
+    failTaskOnFailedTests: true
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifact: TestCafe-and-azure-devops Screenshots "
+  inputs:
+    PathtoPublish: testcafe/reports/screenshots
+    ArtifactName: ChromeRunScreenshots
+  condition: in(variables['Agent.JobStatus'], 'SucceededWithIssues')
+  continueOnError: true
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifact: TestCafe-and-azuredevops Videos "
+  inputs:
+    PathtoPublish: testcafe/reports/videos
+    ArtifactName: ChromeRunVideos
+  condition: in(variables['Agent.JobStatus'], 'SucceededWithIssues')
+  continueOnError: true
